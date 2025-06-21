@@ -3,6 +3,7 @@
 **Author:** Korletey Enock Asare  
 
 **Specialization:** AI-Generated Excel Code Evaluation
+LIVE DEMO: https://asarekings.github.io/Excel_Code_Review/
 
 ## 📋 Project Overview
 
@@ -163,11 +164,11 @@ Data Analyst & Excel Code Review Specialist
 
 - **Email:** [asareenock40@gmail.com]
 - **LinkedIn:** [www.linkedin.com/in/korletey-asare-enock-a053551b3]
-- **Portfolio:** [your-portfolio-website.com]
+- **Portfolio:** (https://asarekings.github.io/Excel_Code_Review/)
 
 ## 📝 License
 
-This project is created for portfolio demonstration purposes. You can use code examples and methodology with appropriate attribution.
+This project is created for portfolio demonstration purposes. You can use code examples and methodology with the right attribution.
 
 ## 🤝 Contributing
 
