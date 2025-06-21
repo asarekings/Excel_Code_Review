@@ -161,13 +161,13 @@ The portfolio is organized into five main sections:
 **Korletey Enock Asare**  
 Data Analyst & Excel Code Review Specialist
 
-- **Email:** [your-email@example.com]
-- **LinkedIn:** [linkedin.com/in/your-profile]
+- **Email:** [asareenock40@gmail.com]
+- **LinkedIn:** [www.linkedin.com/in/korletey-asare-enock-a053551b3]
 - **Portfolio:** [your-portfolio-website.com]
 
 ## 📝 License
 
-This project is created for portfolio demonstration purposes. Code examples and methodology may be referenced with appropriate attribution.
+This project is created for portfolio demonstration purposes. You can use code examples and methodology with appropriate attribution.
 
 ## 🤝 Contributing
 
@@ -185,6 +185,3 @@ This is a personal portfolio project. However, feedback and suggestions for impr
 - [Code Review Checklist](documentation/review-checklist.md)
 - [Quality Assessment Framework](documentation/quality-framework.md)
 
----
-
-*This portfolio demonstrates readiness for SME Platform Code Reviewer positions requiring Excel expertise, systematic evaluation skills, and comprehensive documentation capabilities.*
