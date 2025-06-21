@@ -1,13 +1,12 @@
 # Excel Code Review Portfolio
 
 **Author:** Korletey Enock Asare  
-**Position Target:** SME Platform Code Reviewer  
+
 **Specialization:** AI-Generated Excel Code Evaluation
 
 ## 📋 Project Overview
 
-This portfolio demonstrates systematic evaluation of AI-generated Excel code following professional review frameworks. The project showcases expertise in validating formula accuracy, instruction-following compliance, and code quality standards essential for SME platform code review roles.
-
+This portfolio demonstrates systematic evaluation of AI-generated Excel code following professional review frameworks. The project showcases expertise in validating formula accuracy, instruction-following compliance, and code quality standards.
 ### 🎯 Key Objectives
 
 - **Instruction Following:** Evaluate whether AI-generated code addresses specific prompt requirements
