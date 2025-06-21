@@ -190,6 +190,8 @@
         .review-case:nth-child(2) { animation-delay: 0.1s; }
         .review-case:nth-child(3) { animation-delay: 0.2s; }
         .review-case:nth-child(4) { animation-delay: 0.3s; }
+        .review-case:nth-child(5) { animation-delay: 0.4s; }
+        .review-case:nth-child(6) { animation-delay: 0.5s; }
 
         .review-case h3 {
             color: #2c3e50;
@@ -438,7 +440,6 @@
             text-decoration: underline;
         }
 
-        /* Progress Bar */
         .progress-bar {
             position: fixed;
             top: 0;
@@ -450,7 +451,6 @@
             transition: width 0.3s ease;
         }
 
-        /* Scroll to Top Button */
         .scroll-top {
             position: fixed;
             bottom: 20px;
@@ -475,6 +475,53 @@
         .scroll-top:hover {
             background: #2980b9;
             transform: scale(1.1);
+        }
+
+        .performance-chart {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #27ae60;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .chart-label {
+            width: 150px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .chart-progress {
+            flex: 1;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chart-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            border-radius: 10px;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .chart-percentage {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: bold;
+            font-size: 0.8em;
         }
 
         @media (max-width: 768px) {
@@ -505,7 +552,6 @@
             }
         }
 
-        /* Loading Animation */
         .loading {
             display: inline-block;
             width: 20px;
@@ -531,7 +577,6 @@
             <h1>Excel Code Review Portfolio</h1>
             <div class="subtitle">Demonstrating AI-Generated Excel Code Evaluation Expertise</div>
             <p><strong>Korletey Enock Asare</strong> | Data Analyst & Excel Code Review Specialist</p>
-           
         </div>
 
         <div class="project-nav">
@@ -700,6 +745,66 @@
                     <p>The simplified version achieves the same result with better performance, clearer logic, and reduced error potential. This demonstrates the importance of evaluating AI-generated code for both correctness and efficiency.</p>
                 </div>
             </div>
+
+            <div class="review-case">
+                <h3>Case 4: Date Calculation - WORKDAY Function Issues</h3>
+                <p><strong>AI Prompt:</strong> "Calculate project completion dates excluding weekends and holidays."</p>
+                
+                <div class="code-block">
+                    <div class="code-label">AI Generated (Incomplete)</div>
+                    =WORKDAY(A2,B2)
+                </div>
+
+                <div class="code-block correct-code">
+                    <div class="code-label">Enhanced Version</div>
+                    =IFERROR(WORKDAY(A2,B2,Holidays!$A$2:$A$20),"Invalid Date")
+                </div>
+
+                <div class="rating-box rating-good">Original Rating: Good → Excellent</div>
+
+                <div class="feedback-section">
+                    <h4>🔍 Review Findings:</h4>
+                    <ul>
+                        <li><strong>Missing Holiday Reference:</strong> No consideration for company holidays</li>
+                        <li><strong>Error Handling:</strong> No protection against invalid start dates</li>
+                        <li><strong>Business Logic:</strong> Should account for holiday calendar</li>
+                        <li><strong>Robustness:</strong> Needs validation for negative duration values</li>
+                    </ul>
+                    
+                    <h4>✅ Enhancement Summary:</h4>
+                    <p>Added holiday reference range and error handling to make the formula more robust for real-world project management scenarios. This ensures accurate deadline calculations that account for organizational holiday schedules.</p>
+                </div>
+            </div>
+
+            <div class="review-case">
+                <h3>Case 5: Dynamic Range - INDIRECT Function Security Risk</h3>
+                <p><strong>AI Prompt:</strong> "Create a formula that references different sheets based on dropdown selection."</p>
+                
+                <div class="code-block">
+                    <div class="code-label">AI Generated (Security Risk)</div>
+                    =SUM(INDIRECT(D1&"!A1:A100"))
+                </div>
+
+                <div class="code-block correct-code">
+                    <div class="code-label">Secure Alternative</div>
+                    =SUM(INDEX(SheetData,0,MATCH(D1,SheetNames,0)))
+                </div>
+
+                <div class="rating-box rating-needs-improvement">Original Rating: Needs Improvement</div>
+
+                <div class="feedback-section">
+                    <h4>🔍 Review Findings:</h4>
+                    <ul>
+                        <li><strong>Security Vulnerability:</strong> INDIRECT allows potential injection attacks</li>
+                        <li><strong>Performance Impact:</strong> INDIRECT prevents Excel optimization</li>
+                        <li><strong>Error Handling:</strong> No validation of sheet existence</li>
+                        <li><strong>Alternative Solution:</strong> INDEX/MATCH provides safer dynamic referencing</li>
+                    </ul>
+                    
+                    <h4>✅ Security Improvement:</h4>
+                    <p>Replaced INDIRECT with INDEX/MATCH combination that provides the same functionality without security risks. This approach also enables better performance optimization and error handling in production environments.</p>
+                </div>
+            </div>
         </div>
 
         <div id="methodology" class="project-section">
@@ -712,85 +817,4 @@
             <div class="methodology-step">
                 <div class="step-number">1</div>
                 <h3 style="margin-left: 40px;">Initial Assessment</h3>
-                <ul style="margin-left: 60px; margin-top: 10px;">
-                    <li>Review the original prompt and intended functionality</li>
-                    <li>Identify expected inputs, outputs, and business logic</li>
-                    <li>Assess complexity level and appropriate solution approach</li>
-                </ul>
-            </div>
-
-            <div class="methodology-step">
-                <div class="step-number">2</div>
-                <h3 style="margin-left: 40px;">Syntax & Structure Analysis</h3>
-                <ul style="margin-left: 60px; margin-top: 10px;">
-                    <li>Verify formula syntax and bracket matching</li>
-                    <li>Check function usage and parameter validity</li>
-                    <li>Validate cell references and range specifications</li>
-                </ul>
-            </div>
-
-            <div class="methodology-step">
-                <div class="step-number">3</div>
-                <h3 style="margin-left: 40px;">Logic Verification</h3>
-                <ul style="margin-left: 60px; margin-top: 10px;">
-                    <li>Trace through calculation logic step-by-step</li>
-                    <li>Use Excel's Formula Auditing tools</li>
-                    <li>Verify mathematical accuracy and business rule compliance</li>
-                </ul>
-            </div>
-
-            <div class="methodology-step">
-                <div class="step-number">4</div>
-                <h3 style="margin-left: 40px;">Test Case Execution</h3>
-                <ul style="margin-left: 60px; margin-top: 10px;">
-                    <li>Create diverse test scenarios with known expected results</li>
-                    <li>Test edge cases: empty cells, zero values, text inputs</li>
-                    <li>Validate error handling and boundary conditions</li>
-                </ul>
-            </div>
-
-            <div class="methodology-step">
-                <div class="step-number">5</div>
-                <h3 style="margin-left: 40px;">Performance & Best Practices</h3>
-                <ul style="margin-left: 60px; margin-top: 10px;">
-                    <li>Evaluate calculation efficiency and resource usage</li>
-                    <li>Assess adherence to Excel development best practices</li>
-                    <li>Identify optimization opportunities</li>
-                </ul>
-            </div>
-
-            <div class="methodology-step">
-                <div class="step-number">6</div>
-                <h3 style="margin-left: 40px;">Documentation & Feedback</h3>
-                <ul style="margin-left: 60px; margin-top: 10px;">
-                    <li>Document findings with specific examples</li>
-                    <li>Provide constructive feedback with improvement suggestions</li>
-                    <li>Rate according to established quality criteria</li>
-                </ul>
-            </div>
-
-            <h3 style="color: #2c3e50; margin: 40px 0 20px 0;">📋 Quality Assessment Criteria</h3>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #27ae60;">
-                    <h4 style="color: #27ae60; margin-bottom: 15px;">✅ Excellent (90-100%)</h4>
-                    <ul>
-                        <li>Perfect instruction following</li>
-                        <li>Optimal Excel practices used</li>
-                        <li>Comprehensive error handling</li>
-                        <li>Efficient and maintainable code</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #f39c12;">
-                    <h4 style="color: #f39c12; margin-bottom: 15px;">⚠️ Good (70-89%)</h4>
-                    <ul>
-                        <li>Functionally correct results</li>
-                        <li>Minor optimization opportunities</li>
-                        <li>Basic error handling present</li>
-                        <li>Generally follows best practices</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c;">
-                    <h4 style
+                <ul style="margin-left: 60px; margin-top
