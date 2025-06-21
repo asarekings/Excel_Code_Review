@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel Code Review Project- Korletey Asare</title>
+    <title>Excel Code Review Portfolio - Korletey Asare</title>
     <style>
         * {
             margin: 0;
@@ -33,6 +33,18 @@
             text-align: center;
             margin-bottom: 30px;
             backdrop-filter: blur(10px);
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header h1 {
@@ -65,6 +77,24 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 14px;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
         }
 
         .nav-btn:hover {
@@ -75,6 +105,12 @@
 
         .nav-btn.active {
             background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
         }
 
         .project-section {
@@ -85,16 +121,27 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
             backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
         }
 
         .project-section.active {
             display: block;
-            animation: fadeIn 0.5s ease-in;
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeInUp 0.5s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-title {
@@ -103,6 +150,22 @@
             margin-bottom: 20px;
             border-bottom: 3px solid #3498db;
             padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #e74c3c;
+            transition: width 0.8s ease;
+        }
+
+        .project-section.active .section-title::after {
+            width: 100px;
         }
 
         .review-case {
@@ -112,7 +175,21 @@
             margin: 20px 0;
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(-10px);
+            opacity: 0;
+            animation: slideInRight 0.6s ease-out forwards;
         }
+
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .review-case:nth-child(2) { animation-delay: 0.1s; }
+        .review-case:nth-child(3) { animation-delay: 0.2s; }
+        .review-case:nth-child(4) { animation-delay: 0.3s; }
 
         .review-case h3 {
             color: #2c3e50;
@@ -129,6 +206,11 @@
             margin: 10px 0;
             overflow-x: auto;
             position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .code-block:hover {
+            transform: scale(1.02);
         }
 
         .code-label {
@@ -153,6 +235,13 @@
             border-radius: 20px;
             font-weight: bold;
             margin: 10px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .rating-excellent {
@@ -193,16 +282,35 @@
             text-align: center;
             transform: translateY(0);
             transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInScale 0.6s ease-out forwards;
         }
 
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .metric-card:nth-child(1) { animation-delay: 0.1s; }
+        .metric-card:nth-child(2) { animation-delay: 0.2s; }
+        .metric-card:nth-child(3) { animation-delay: 0.3s; }
+        .metric-card:nth-child(4) { animation-delay: 0.4s; }
+
         .metric-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
         }
 
         .metric-number {
             font-size: 2.5em;
             font-weight: bold;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .methodology-step {
@@ -212,7 +320,23 @@
             border-radius: 10px;
             border-left: 5px solid #3498db;
             position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.6s ease-out forwards;
         }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .methodology-step:nth-child(2) { animation-delay: 0.1s; }
+        .methodology-step:nth-child(3) { animation-delay: 0.2s; }
+        .methodology-step:nth-child(4) { animation-delay: 0.3s; }
+        .methodology-step:nth-child(5) { animation-delay: 0.4s; }
+        .methodology-step:nth-child(6) { animation-delay: 0.5s; }
 
         .step-number {
             position: absolute;
@@ -227,6 +351,16 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            animation: rotateIn 0.8s ease-out;
+        }
+
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-180deg) scale(0);
+            }
+            to {
+                transform: rotate(0deg) scale(1);
+            }
         }
 
         .tools-grid {
@@ -242,11 +376,27 @@
             padding: 15px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: rotateY(90deg);
+            animation: flipIn 0.6s ease-out forwards;
         }
 
+        @keyframes flipIn {
+            to {
+                opacity: 1;
+                transform: rotateY(0deg);
+            }
+        }
+
+        .tool-card:nth-child(1) { animation-delay: 0.1s; }
+        .tool-card:nth-child(2) { animation-delay: 0.2s; }
+        .tool-card:nth-child(3) { animation-delay: 0.3s; }
+        .tool-card:nth-child(4) { animation-delay: 0.4s; }
+
         .tool-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotateY(5deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .vba-example {
@@ -258,6 +408,12 @@
             margin: 15px 0;
             position: relative;
             overflow-x: auto;
+            transition: all 0.3s ease;
+        }
+
+        .vba-example:hover {
+            transform: scale(1.01);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .contact-info {
@@ -267,16 +423,58 @@
             color: white;
             border-radius: 15px;
             margin-top: 30px;
+            animation: fadeIn 1s ease-out;
         }
 
         .contact-info a {
             color: #ecf0f1;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         .contact-info a:hover {
+            color: #3498db;
             text-decoration: underline;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #e74c3c);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            background: #2980b9;
+            transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
@@ -295,25 +493,63 @@
             
             .nav-btn {
                 width: 200px;
+                margin: 5px 0;
             }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+    
     <div class="container">
         <div class="header">
             <h1>Excel Code Review Portfolio</h1>
             <div class="subtitle">Demonstrating AI-Generated Excel Code Evaluation Expertise</div>
             <p><strong>Korletey Enock Asare</strong> | Data Analyst & Excel Code Review Specialist</p>
-            <p>Tailored for SME Platform Code Reviewer Position</p>
+           
         </div>
 
         <div class="project-nav">
-            <button class="nav-btn active" onclick="showSection('overview')">Project Overview</button>
-            <button class="nav-btn" onclick="showSection('cases')">Review Cases</button>
-            <button class="nav-btn" onclick="showSection('methodology')">Review Methodology</button>
-            <button class="nav-btn" onclick="showSection('vba')">VBA Analysis</button>
-            <button class="nav-btn" onclick="showSection('results')">Results & Impact</button>
+            <button class="nav-btn active" onclick="showSection('overview')" data-section="overview">
+                Project Overview
+            </button>
+            <button class="nav-btn" onclick="showSection('cases')" data-section="cases">
+                Review Cases
+            </button>
+            <button class="nav-btn" onclick="showSection('methodology')" data-section="methodology">
+                Review Methodology
+            </button>
+            <button class="nav-btn" onclick="showSection('vba')" data-section="vba">
+                VBA Analysis
+            </button>
+            <button class="nav-btn" onclick="showSection('results')" data-section="results">
+                Results & Impact
+            </button>
         </div>
 
         <div id="overview" class="project-section active">
@@ -557,160 +793,4 @@
                 </div>
                 
                 <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c;">
-                    <h4 style="color: #e74c3c; margin-bottom: 15px;">❌ Needs Improvement (<70%)</h4>
-                    <ul>
-                        <li>Incorrect or incomplete results</li>
-                        <li>Poor error handling</li>
-                        <li>Inefficient implementation</li>
-                        <li>Significant optimization needed</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div id="vba" class="project-section">
-            <h2 class="section-title">🔧 VBA Code Analysis</h2>
-            
-            <p style="margin-bottom: 20px; font-size: 1.1em;">
-                Advanced review of AI-generated VBA scripts demonstrates my capability to evaluate complex Excel automation code for functionality, efficiency, and best practices compliance.
-            </p>
-
-            <div class="review-case">
-                <h3>VBA Case Study: Data Processing Automation</h3>
-                <p><strong>AI Prompt:</strong> "Create a VBA macro to process sales data, calculate totals, and format the results."</p>
-                
-                <div class="vba-example">
-                    <div class="code-label">AI Generated VBA (Problematic)</div>
-Sub ProcessSalesData()
-    Dim i As Integer
-    For i = 1 To 1000
-        Cells(i, 3).Value = Cells(i, 1).Value * Cells(i, 2).Value
-        If Cells(i, 3).Value > 1000 Then
-            Cells(i, 3).Interior.Color = RGB(255, 0, 0)
-        End If
-    Next i
-End Sub
-                </div>
-
-                <div class="vba-example">
-                    <div class="code-label" style="background: #27ae60;">Improved VBA Version</div>
-Sub ProcessSalesData()
-    Dim ws As Worksheet
-    Dim lastRow As Long
-    Dim i As Long
-    Dim qty As Variant, price As Variant, total As Double
-    
-    Set ws = ActiveSheet
-    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
-    
-    On Error GoTo ErrorHandler
-    
-    For i = 2 To lastRow ' Skip header row
-        qty = ws.Cells(i, 1).Value
-        price = ws.Cells(i, 2).Value
-        
-        ' Validate input data
-        If IsNumeric(qty) And IsNumeric(price) Then
-            total = CDbl(qty) * CDbl(price)
-            ws.Cells(i, 3).Value = total
-            
-            ' Format high-value sales
-            If total > 1000 Then
-                ws.Cells(i, 3).Interior.Color = RGB(255, 0, 0)
-                ws.Cells(i, 3).Font.Bold = True
-            End If
-        Else
-            ws.Cells(i, 3).Value = "Invalid Data"
-            ws.Cells(i, 3).Interior.Color = RGB(255, 255, 0)
-        End If
-    Next i
-    
-    Exit Sub
-    
-ErrorHandler:
-    MsgBox "Error processing data at row " & i & ": " & Err.Description
-End Sub
-                </div>
-
-                <div class="rating-box rating-needs-improvement">Original Rating: Needs Improvement</div>
-
-                <div class="feedback-section">
-                    <h4>🔍 Critical Issues Identified:</h4>
-                    <ul>
-                        <li><strong>Hard-coded Loop Range:</strong> Fixed loop to 1000 rows regardless of actual data</li>
-                        <li><strong>No Error Handling:</strong> Script would crash on invalid data or empty cells</li>
-                        <li><strong>No Data Validation:</strong> Doesn't check if cells contain numeric values</li>
-                        <li><strong>Poor Variable Types:</strong> Using Integer instead of Long for row counters</li>
-                        <li><strong>No Worksheet Reference:</strong> Assumes ActiveSheet without validation</li>
-                    </ul>
-                    
-                    <h4>✅ Improvements Implemented:</h4>
-                    <ul>
-                        <li><strong>Dynamic Range Detection:</strong> Uses xlUp to find actual last row</li>
-                        <li><strong>Comprehensive Error Handling:</strong> Includes error trapping and user feedback</li>
-                        <li><strong>Input Validation:</strong> Checks for numeric values before calculation</li>
-                        <li><strong>Proper Data Types:</strong> Uses appropriate variable types and explicit conversions</li>
-                        <li><strong>Worksheet Management:</strong> Explicit worksheet references for reliability</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3 style="color: #2c3e50; margin: 40px 0 20px 0;">🛠️ VBA Review Checklist</h3>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                <div style="background: #34495e; color: white; padding: 15px; border-radius: 10px;">
-                    <h4>📝 Code Structure</h4>
-                    <ul style="margin-top: 10px;">
-                        <li>Proper variable declarations</li>
-                        <li>Appropriate data types</li>
-                        <li>Clear naming conventions</li>
-                        <li>Logical code organization</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #34495e; color: white; padding: 15px; border-radius: 10px;">
-                    <h4>🛡️ Error Handling</h4>
-                    <ul style="margin-top: 10px;">
-                        <li>On Error statements</li>
-                        <li>Input validation</li>
-                        <li>Graceful failure recovery</li>
-                        <li>User-friendly error messages</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #34495e; color: white; padding: 15px; border-radius: 10px;">
-                    <h4>⚡ Performance</h4>
-                    <ul style="margin-top: 10px;">
-                        <li>Efficient loop structures</li>
-                        <li>Minimal worksheet interactions</li>
-                        <li>Proper object cleanup</li>
-                        <li>Screen updating management</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #34495e; color: white; padding: 15px; border-radius: 10px;">
-                    <h4>✅ Best Practices</h4>
-                    <ul style="margin-top: 10px;">
-                        <li>Option Explicit usage</li>
-                        <li>Meaningful comments</li>
-                        <li>Consistent indentation</li>
-                        <li>Modular code design</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div id="results" class="project-section">
-            <h2 class="section-title">📈 Results & Impact</h2>
-            
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">15</div>
-                    <div>Critical Errors Prevented</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">40%</div>
-                    <div>Code Efficiency Improved</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">100%</div>
+                    <h4 style
